@@ -1,0 +1,117 @@
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Home } from './components/home/home';
+import NavScrollExample from './components/navbar/navbar';
+import {Footer} from './components/footer/footer';
+import { Login,AdminLogin, Register } from './components/login/login';
+import './App.css'
+import { Admin } from './components/admin/admin';
+import AdminNavScrollExample from './components/admin/navbar/navbar';
+import {  AdminCourse } from './components/admin/course/course';
+import { Subject } from './components/admin/course/subject';
+import { Notes, Videos } from './components/admin/course/videos';
+import { useEffect, useState } from 'react';
+import Loading from './components/loading/loading';
+import { AdminPage } from './components/admin/adminPage/adminPage';
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+function App() {
+
+  const [role, setRole] = useState(null); // User role: 'user' or 'admin'
+  const [loading, setLoading] = useState(true);
+  const [user,setUser] = useState({});
+
+  useEffect(() => {
+    const verifyLogin = async () => {
+      try {
+        const response = await fetch(process.env.REACT_APP_API_CALLBACK+'/login/verify',
+          {method:'POST',credentials: 'include'}
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setRole(data.role); // Assuming the response contains the user's role
+          setUser(data.user)
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    verifyLogin();
+  }, []);
+
+  if (loading) {
+    return <Loading/>;
+  } 
+
+  if(role === 'admin'){
+    return (
+      <Router>
+        <AdminNavScrollExample/>
+        <ScrollToTop/>
+        <Routes>
+          <Route path='/' element={<Admin/>}/>
+          <Route path='/adminCourse/:id' element={<AdminCourse/>}/>
+          <Route path='/adminCourse/:id' element={<AdminCourse/>}/>
+          <Route path='/adminSubject' element={<Subject/>}/>
+          <Route path='/adminVideos' element={<Videos/>}/>
+          <Route path='/adminNotes' element={<Notes/>}/>
+          <Route path='/admins' element={<AdminPage/>}/>
+          <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
+        <Footer/> 
+      </Router>
+    );
+  }
+  else{
+    return (
+      <Router>
+        <NavScrollExample user={user}/>
+        <ScrollToTop/>
+            <div class="area" >
+                    <ul class="circles">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                    </ul> 
+        </div >
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/register' element={<Register/>} />
+          <Route path='/adminlogin' element={<AdminLogin/>} />
+          <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
+        <Footer/>
+      </Router>
+    );
+  }
+
+ 
+}
+
+
+
+export default App;
