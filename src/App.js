@@ -12,6 +12,7 @@ import { Notes, Videos } from './components/admin/course/videos';
 import { useEffect, useState } from 'react';
 import Loading from './components/loading/loading';
 import { AdminPage } from './components/admin/adminPage/adminPage';
+import { StudentPage } from './components/admin/studentPage/studentPage';
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -65,6 +66,7 @@ function App() {
           <Route path='/adminVideos' element={<Videos/>}/>
           <Route path='/adminNotes' element={<Notes/>}/>
           <Route path='/admins' element={<AdminPage/>}/>
+          <Route path='/students' element={<StudentPage/>}/>
           <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
         <Footer/> 
       </Router>
