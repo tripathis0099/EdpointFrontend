@@ -11,7 +11,8 @@ export const StudentPage = () => {
         name: "",
         email: "",
         phone: "",
-        dob: ""
+        standard: "",
+        city: ""
     });
     const [selectedUser, setSelectedUser] = useState(null);
     const [updatin,setUpdating] = useState(false);
@@ -23,7 +24,8 @@ export const StudentPage = () => {
             name: "",
             email: "",
             phone: "",
-            dob: ""
+            standard: "",
+            city: "",
         });
         setSelectedUser(null);
     };
@@ -82,7 +84,7 @@ export const StudentPage = () => {
             fetchUsers();
             // Close modal
             handleClose();
-        setUpdating(false);
+            setUpdating(false);
 
         } catch (error) {
             console.error("Error editing admin:", error);
@@ -96,8 +98,6 @@ export const StudentPage = () => {
             if (window.confirm('Are you sure you want to delete this User?')) {
                 try {
                     setUpdating(true);
-            
-            
             
                         const response = await fetch(process.env.REACT_APP_API_CALLBACK + `/login/deleteUser/${userId}`, {
                             method: "POST",
@@ -125,7 +125,8 @@ export const StudentPage = () => {
             name: users?.name,
             email: users?.email,
             phone: users?.phone,
-            dob: users?.dob,
+            standard: users?.standard,
+            city: users?.city,
         });
         setShowModal(true);
     };
@@ -181,8 +182,8 @@ export const StudentPage = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>DOB</th>
-                            <th>Action</th>
+                            <th>standard</th>
+                            <th>city</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -192,7 +193,8 @@ export const StudentPage = () => {
                                 <td>{users.name}</td>
                                 <td>{users.email}</td>
                                 <td>{users.phone}</td>
-                                <td>{formatDate(users.dob)}</td>
+                                <td>{users.standard}</td>
+                                <td>{users.city}</td>
                                 <td style={{ display: 'flex', justifyContent: 'space-evenly', gap: '10px' }}>
                                     <div href="#" style={{ color: 'green', cursor: 'pointer' }} onClick={() => handleShow(users)}>Edit</div>
                                     <div style={{ color: 'red', cursor: 'pointer' }} onClick={() => handleDeleteUser(users._id)}>Delete</div>
@@ -222,9 +224,13 @@ export const StudentPage = () => {
                             <Form.Label>Phone</Form.Label>
                             <Form.Control type="text" name="phone" value={formData.phone} onChange={handleInputChange} />
                         </Form.Group>
-                        <Form.Group controlId="dob">
-                            <Form.Label>DOB</Form.Label>
-                            <Form.Control type="date" name="dob" value={formData.dob} onChange={handleInputChange} />
+                        <Form.Group controlId="standard">
+                            <Form.Label>Standard</Form.Label>
+                            <Form.Control type="text" name="standard" value={formData.standard} onChange={handleInputChange} />
+                        </Form.Group>
+                        <Form.Group controlId="city">
+                            <Form.Label>City</Form.Label>
+                            <Form.Control type="text" name="city" value={formData.city} onChange={handleInputChange} />
                         </Form.Group>
                     </Form>
                 </Modal.Body>

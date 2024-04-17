@@ -1,6 +1,7 @@
 import { BasicCard, BasicCardButton } from "../card/card";
 import NavScrollExample from "../navbar/navbar"
 import Carousel from 'react-bootstrap/Carousel';
+import React, { useEffect, useState } from "react";
 import './home.css'
 function Crausal() {
     return (
@@ -29,8 +30,40 @@ function Crausal() {
       </Carousel>
     );
   }
-  
+
 export const Home = ()=>{
+
+  const [courses, setCourses] = useState(null);
+  const [bestCourses, setBestCourses] = useState(null);
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+  const fetchCourses = async () => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_API_CALLBACK + "/cources/"
+      );
+      const data = await response.json();
+      data.forEach(course => {
+        if (course.image.data) {
+          const base64 = btoa(
+            new Uint8Array(course.image.data.data).reduce(
+              (data, byte) => data + String.fromCharCode(byte),
+              '',
+            ),
+          );
+          course.image.data = 'data:' + course.image.contentType + ';base64,' + base64;
+        }
+      });
+      setCourses(data);
+      if (courses) {
+        setBestCourses(courses.slice(0, 3));
+      }
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
     return(
         <div className="body">
          <Crausal/>
@@ -48,9 +81,17 @@ export const Home = ()=>{
          <div className="selfCard">
             <h2>Best Courses</h2>
             <div className="flex-scroll">
-                <BasicCard img={'/physics.webp'} title={'Target JEE 2026'} text={"Join our JEE 2026 batch, tailored for success in cracking the exam. Enroll now for comprehensive preparation!"}/>
-                <BasicCard img={'/chemistry.webp'} title={'Eklavya Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
-                <BasicCard img={'/class.webp'} title={'Prayas Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
+                 
+                {bestCourses && bestCourses.map((course, index) => (
+                    <div key={index}>
+
+
+                       <BasicCardButton img={course.image.data} title={course.name} text={course.description}/>
+                    
+                    </div>
+                  ))
+                }
+           
             </div>
          </div>
           <section id='offline'>
@@ -83,10 +124,18 @@ export const Home = ()=>{
          <div className="selfCard">
             <h2>Offline Courses</h2>
             <div className="flex-scroll">
-                <BasicCardButton img={'/physics.webp'} title={'Prayas Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
+            {courses && courses.map((course, index) => (
+                course.mode === "Offline" && (
+                  <div key={index}>
+                    <BasicCardButton img={course.image.data} title={course.name} text={course.description}/>
+                  </div>
+                )
+              ))}
+
+                {/* <BasicCardButton img={'/physics.webp'} title={'Prayas Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
                 <BasicCardButton img={'/class.webp'} title={'Ramanujan Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
                 <BasicCardButton img={'/physics.webp'} title={'Eklavya Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
-                <BasicCardButton img={'/class.webp'} title={'Arjuna Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
+                <BasicCardButton img={'/class.webp'} title={'Arjuna Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/> */}
             </div>
          </div>
           <section id="teachers">
@@ -115,8 +164,13 @@ export const Home = ()=>{
          <div className="selfCard">
             <h2>Online Courses</h2>
             <div className="flex-scroll">
-                <BasicCard img={'/physics.webp'} title={'Eklavya Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
-                <BasicCard img={'/class.webp'} title={'Arjuna Batch'} text={"Some quick example text to build on the card title and make up the bulk of the card's content."}/>
+            {courses && courses.map((course, index) => (
+               course.mode === "Online" && (
+                 <div key={index}>
+                   <BasicCardButton img={course.image.data} title={course.name} text={course.description}/>
+                 </div>
+               )
+             ))}
             </div>
          </div>
 
