@@ -56,9 +56,10 @@ export const Home = ()=>{
         }
       });
       setCourses(data);
-      if (courses) {
-        setBestCourses(courses.slice(0, 3));
-      }
+      console.log(data);
+      setBestCourses(data.slice(0,3));
+    
+      
       console.log(data);
     } catch (error) {
       console.error("Error fetching courses:", error);
@@ -86,7 +87,7 @@ export const Home = ()=>{
                     <div key={index}>
 
 
-                       <BasicCardButton img={course.image.data} title={course.name} text={course.description}/>
+                       <BasicCardButton id= {course._id} img={course.image.data} title={course.name} text={course.description}/>
                     
                     </div>
                   ))
@@ -127,7 +128,7 @@ export const Home = ()=>{
             {courses && courses.map((course, index) => (
                 course.mode === "Offline" && (
                   <div key={index}>
-                    <BasicCardButton img={course.image.data} title={course.name} text={course.description}/>
+                    <BasicCardButton id= {course._id} img={course.image.data} title={course.name} text={course.description}/>
                   </div>
                 )
               ))}
@@ -167,7 +168,7 @@ export const Home = ()=>{
             {courses && courses.map((course, index) => (
                course.mode === "Online" && (
                  <div key={index}>
-                   <BasicCardButton img={course.image.data} title={course.name} text={course.description}/>
+                   <BasicCardButton id= {course._id} img={course.image.data} title={course.name} text={course.description}/>
                  </div>
                )
              ))}

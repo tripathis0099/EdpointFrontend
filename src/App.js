@@ -13,6 +13,8 @@ import { useEffect, useState } from 'react';
 import Loading from './components/loading/loading';
 import { AdminPage } from './components/admin/adminPage/adminPage';
 import { StudentPage } from './components/admin/studentPage/studentPage';
+import CourseInfo from './components/courseInfo/courseInfo';
+import BuyRequest from './components/admin/BuyRequestPage/BuyRequest';
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -38,6 +40,7 @@ function App() {
           const data = await response.json();
           setRole(data.role); // Assuming the response contains the user's role
           setUser(data.user)
+          console.log(data.user)
         }
       } catch (error) {
         console.error('Error:', error);
@@ -57,15 +60,15 @@ function App() {
     return (
       <Router>
         <AdminNavScrollExample/>
-        <ScrollToTop/>
+        <ScrollToTop />
         <Routes>
           <Route path='/' element={<Admin/>}/>
-          <Route path='/adminCourse/:id' element={<AdminCourse/>}/>
           <Route path='/adminCourse/:id' element={<AdminCourse/>}/>
           <Route path='/adminSubject' element={<Subject/>}/>
           <Route path='/adminVideos' element={<Videos/>}/>
           <Route path='/adminNotes' element={<Notes/>}/>
           <Route path='/admins' element={<AdminPage/>}/>
+          <Route path='/buyRequests' element={<BuyRequest/>} />
           <Route path='/students' element={<StudentPage/>}/>
           <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
         <Footer/> 
@@ -102,10 +105,13 @@ function App() {
         </div >
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/:id" element={<CourseInfo user={user}/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
           <Route path='/adminlogin' element={<AdminLogin/>} />
+          
           <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
+
         <Footer/>
       </Router>
     );

@@ -47,6 +47,8 @@ function AdminNavScrollExample({user}) {
             <Nav.Link href="/">Courses</Nav.Link>
             <Nav.Link href="/admins">Admins</Nav.Link>
             <Nav.Link href="/students">Students</Nav.Link>
+            <Nav.Link href="/buyRequests
+            ">Buy Requests</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <a href='/login'>
