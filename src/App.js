@@ -112,6 +112,7 @@ function App() {
           <Route path='/adminlogin' element={<AdminLogin/>} />
           <Route path='/text' element={<VideoNotes/>} />
           <Route path='/chapters' element={<Chapters/>} />
+          <Route path='/startCourse' element={<VideoNotes/>} />
           <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
 
         <Footer/>

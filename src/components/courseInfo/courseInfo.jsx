@@ -4,6 +4,7 @@ import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
 import { CourseSubjects } from './cource_assets';
 import './courseInfo.css'
+import Loading from '../loading/loading';
 function CourseInfo({user}) {
 
     const { id } = useParams(); // Extract the course ID from the URL
@@ -74,11 +75,11 @@ function CourseInfo({user}) {
   return (
     <div>
         { isLoading ? (
-          <p>Loading...</p>) : (
+          <Loading/>) : (
             
-            user.courses.includes(id) ? (
+            user.courses?.includes(id) ? (
             <>
-            <CourseSubjects subjects={course.subjects}/>
+            <CourseSubjects subjects={course.subjects} courseName={course.name}/>
             </>
            ) : (
           <>

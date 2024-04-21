@@ -1,6 +1,6 @@
 .subjectCont{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #1b1a559a;
     padding: 40px;
     display: flex;
@@ -10,6 +10,7 @@
 
 .subjectCont .text-wrap{
     color: #fff;
+    text-transform: capitalize;
 }
 
 .subjectFlex{
@@ -30,6 +31,7 @@
     background-color: #1b1a55;
     font-size: 25px;
     cursor: pointer;
+    text-transform: capitalize;
     transition: 0.2s;
 }
 .subjectFlex .subject:hover{
