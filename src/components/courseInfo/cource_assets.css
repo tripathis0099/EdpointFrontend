@@ -1,0 +1,42 @@
+.subjectCont{
+    width: 100vw;
+    height: 100vh;
+    background-color: #1b1a559a;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.subjectCont .text-wrap{
+    color: #fff;
+}
+
+.subjectFlex{
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.subjectFlex .subject{
+    width: 300px;
+    height: 200px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: #1b1a55;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.subjectFlex .subject:hover{
+    transform: scale(1.06);
+}
+
+.nav-link{
+    color: #fff;
+}
+
