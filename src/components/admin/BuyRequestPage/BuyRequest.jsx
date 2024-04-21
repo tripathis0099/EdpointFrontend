@@ -6,6 +6,7 @@ const BuyRequest = () => {
 
   const [users, setUsers] = useState([]);
   const [courses, setCourses] = useState([]);
+  const [id, setId] = useState([]);
   const [loading, setLoading] = useState(true); // Set loading state to true initially
   const [SNo, setSNo] = useState(0); // Initialize SNo state
 
@@ -18,8 +19,10 @@ const BuyRequest = () => {
         // Extract and store user and course data separately
         const usersData = data.map(item => item.userInfo);
         const coursesData = data.map(item => item.courseInfo);
+        const ids = data.map(item => item.id);
         setUsers(usersData);
         setCourses(coursesData);
+        setId(ids)
         setLoading(false); // Set loading to false after data fetching is complete
       } catch (error) {
         console.error('Error:', error);
@@ -29,7 +32,33 @@ const BuyRequest = () => {
 
     fetchData();
   }, []);
-
+  const handleReject = async(id, email, courseName) => {
+   try{
+    const response = await fetch(process.env.REACT_APP_API_CALLBACK+'/cources/deleteBuyRequest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email, id: id, name: courseName}),  // replace with the actual email
+    });
+   }catch(error){
+     console.log(error)
+   }
+  }
+  
+  const  handleGrant = async (userId, courseId, email, courseName, id) =>{
+    try{
+      const response = await fetch(process.env.REACT_APP_API_CALLBACK+'/cources/assignCourse', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: userId, course: courseId, email: email, name: courseName, id:id}),  // replace with the actual email
+      });
+     }catch(error){
+       console.log(error)
+     }
+  }
   return (
     <div style={{ minHeight: '100vh' }}>
       <Container>
@@ -57,14 +86,14 @@ const BuyRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
-              <tr key={user.id}>
+            {id.map((id, index) => (
+              <tr key={id}>
                 <td>{SNo + index + 1}</td> {/* Display the index */}
-                <td>{user.username}</td>
+                <td>{users[index].username}</td>
                 <td>{courses[index].name}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-evenly', gap: '10px' }}>
-                  <div href="#" style={{ color: 'green', cursor: 'pointer' }} >Grant</div>
-                  <div style={{ color: 'red', cursor: 'pointer' }} >Reject</div>
+                  <div href="#" style={{ color: 'green', cursor: 'pointer' }} onClick={()=>{if(window.confirm('Grant this request?')) handleGrant(users[index].id, courses[index].id, users[index].email, courses[index].name, id)}}>Grant</div>
+                  <div style={{ color: 'red', cursor: 'pointer' }} onClick={()=>{if(window.confirm('Reject this request?')) handleReject(id, users[index].email, courses[index].name)}}>Reject</div>
                 </td>
               </tr>
             ))}

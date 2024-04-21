@@ -1,23 +1,26 @@
 import { useState } from "react";
 import "./cource_assets.css";
 import Nav from "react-bootstrap/Nav";
-
+import { Link } from "react-router-dom";
 export const CourseSubjects = ({ subjects }) => {
+  console.log(subjects)
   return (
     <div className="subjectCont">
-      <div className="text-wrap" style={{ "max-width": "450px" }}>
-        <h4>Our Remarkable Achievements</h4>
-      </div>
-      <div className="subjectFlex">
-        {subjects.map((item, index) => {
-          return <div className="subject">{item.title}</div>;
-        })}
-      </div>
-    </div>
+  <div className="text-wrap" style={{ "max-width": "450px" }}>
+    <h4>Our Remarkable Achievements</h4>
+  </div>
+  <div className="subjectFlex">
+    {Array.isArray(subjects) && subjects.map((item, index) => {
+      return item && <Link to={"/chapters"} key={index} className="subject" style={{textDecoration:"none"}}>{item.title}</Link>;
+    })}
+  </div>
+</div>
+
   );
 };
 
-export const Chapters = ()=>{
+
+export const Chapters = () =>{
     return(
         <div style={{display:'flex',flexDirection:'column',minHeight:'100vh',backgroundColor:'#1b1a55'}}>
             
@@ -35,9 +38,7 @@ export const Chapters = ()=>{
                 </svg>
                 </div>
             </div>
-
-
-            
+       
         </div>
     )
 }
@@ -46,7 +47,6 @@ export const VideosSlide = ()=>{
     return(
         <div style={{display:'flex',flexDirection:'column',minHeight:'100vh',backgroundColor:'#1b1a55'}}>
             
-            
             <div style={{display:'flex',gap:'16px',alignItems:'center',color:'#fff',padding:'10px',borderBottom:'1px solid #ffffff52'}}>
                 <img style={{width:'124px',height:'auto',borderRadius:'5px'}} src='https://img.youtube.com/vi/tgbNymZ7vqY/default.jpg'/>
                 <div style={{display:'flex',flexDirection:'column'}}>
@@ -54,9 +54,6 @@ export const VideosSlide = ()=>{
                     <span style={{fontSize:'12px'}}>March 12th 2024</span>
                 </div>
             </div>
-
-
-
         </div>
     )
 }
@@ -64,7 +61,6 @@ export const VideosSlide = ()=>{
 export const NotesSlide = ()=>{
     return(
         <div style={{display:'flex',flexDirection:'column',minHeight:'100vh',backgroundColor:'#1b1a55'}}>
-            
             
             <div style={{display:'flex',gap:'10px',alignItems:'center',color:'#fff',padding:'10px',justifyContent:'space-between',borderBottom:'1px solid #ffffff52'}}>
                 <div style={{display:'flex',flexDirection:'column'}}>
@@ -77,9 +73,7 @@ export const NotesSlide = ()=>{
                 </svg>
                 </div>
             </div>
-
-
-            
+ 
         </div>
     )
 }

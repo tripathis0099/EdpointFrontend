@@ -18,7 +18,7 @@ export function BasicCard({img, title, text}) {
 
 export function BasicCardButton({id, img, title, text}) {
     return (
-      <Link to={`/${id}`}>
+      <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
         <Card className='card' style={{ width: '18rem',backgroundColor:'#1B1A55',color:'#fff'}}>
         <Card.Img variant="top" src={img} />
         <Card.Body>
