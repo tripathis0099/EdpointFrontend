@@ -82,7 +82,9 @@ const BuyRequest = () => {
           <thead>
             <tr>
               <th>Index</th>
+              <th>email Id</th>
               <th>User</th>
+              <th>phone</th>
               <th>Course</th>
               <th>Action</th>
             </tr>
@@ -91,7 +93,9 @@ const BuyRequest = () => {
             {id.map((id, index) => (
               <tr key={id}>
                 <td>{SNo + index + 1}</td> {/* Display the index */}
+                <td>{users[index].email}</td>
                 <td>{users[index].username}</td>
+                <td>{users[index].phone}</td>
                 <td>{courses[index].name}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-evenly', gap: '10px' }}>
                   <div href="#" style={{ color: 'green', cursor: 'pointer' }} onClick={()=>{if(window.confirm('Grant this request?')) handleGrant(users[index].id, courses[index].id, users[index].email, courses[index].name, id)}}>Grant</div>
