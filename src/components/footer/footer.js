@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
@@ -13,30 +14,37 @@ export const Footer = () => {
           <div className="row text-center d-flex justify-content-center pt-5">
             <div className="col-md-2">
               <h6 className="text-uppercase font-weight-bold">
-                <a href="#!" className="text-white" style={{textDecoration:'none'}}>
+                <Link to="/about" className="text-white" style={{textDecoration:'none'}}>
                   About us
-                </a>
+                </Link>
               </h6>
             </div>
             <div className="col-md-2">
               <h6 className="text-uppercase font-weight-bold">
-                <a href="#!" className="text-white" style={{textDecoration:'none'}}>
-                  Products
-                </a>
+                <Link to="/tandc" className="text-white" style={{textDecoration:'none'}}>
+                  Terms And Conditions
+                </Link>
               </h6>
             </div>
             <div className="col-md-2">
               <h6 className="text-uppercase font-weight-bold">
-                <a href="#!" className="text-white" style={{textDecoration:'none'}}>
-                  Help
-                </a>
+                <Link to="/privacy-policy" className="text-white" style={{textDecoration:'none'}}>
+                  Privacy Policy
+                </Link>
               </h6>
             </div>
             <div className="col-md-2">
               <h6 className="text-uppercase font-weight-bold">
-                <a href="#!" className="text-white" style={{textDecoration:'none'}}>
+                <Link to="/refund-policy" className="text-white" style={{textDecoration:'none'}}>
+                  Refund Policy
+                </Link>
+              </h6>
+            </div>
+            <div className="col-md-2">
+              <h6 className="text-uppercase font-weight-bold">
+                <Link to="/contact" className="text-white" style={{textDecoration:'none'}}>
                   Contact
-                </a>
+                </Link>
               </h6>
             </div>
           </div>
