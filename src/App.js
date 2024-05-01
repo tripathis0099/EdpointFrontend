@@ -18,6 +18,8 @@ import BuyRequest from './components/admin/BuyRequestPage/BuyRequest';
 import { Chapters, CourseSubjects, VideoNotes } from './components/courseInfo/cource_assets';
 import WatchVideo from './components/courseInfo/WatchVideo';
 import ReadNote from './components/courseInfo/ReadNote';
+import { AboutUsComponent, ContactUsComponent, PrivacyPolicyComponent, RefundPolicyComponent, TermsAndConditionsComponent } from './components/footer/info';
+import Gallery from './components/Gallery/Gallery';
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -117,6 +119,12 @@ function App() {
           <Route path='/startCourse' element={<VideoNotes/>} />
           <Route path='/watchvideo' element={<WatchVideo/>} />
           <Route path='/readNote' element={<ReadNote/>} />
+          <Route path='/gallery' element={<Gallery/>} />
+          <Route path='/about' element={<AboutUsComponent/>} />
+          <Route path='/tandc' element={<TermsAndConditionsComponent/>} />
+          <Route path='/privacy-policy' element={<PrivacyPolicyComponent/>} />
+          <Route path='/refund-policy' element={<RefundPolicyComponent/>} />
+          <Route path='/contact' element={<ContactUsComponent/>} />
           <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
 
         <Footer/>

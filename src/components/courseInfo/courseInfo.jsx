@@ -89,7 +89,17 @@ function CourseInfo({user}) {
             <div className="text-wrap">
               <h4>{course.name}</h4>
               <div className="text">{course.description}</div>
-              <div className="text">{course.price}</div>
+              <div className="pricing">
+  {course.discount && (
+    <span className="original-price" style={{ textDecoration: 'line-through', color: '#aaa', marginRight: '10px' }}>
+      ₹ {course.price}
+    </span>
+  )}
+  <span className="current-price" style={{ filter: course.discount ? 'blur(0.2px)' : 'none' }}>
+    ₹ {course.discount ? course.discount : course.price}
+  </span>
+</div>
+
               {user.requests?.includes(id) ? (
                  <button type="button" class="btn btn-warning" disabled>Request Pending...</button>
                  ) : (
@@ -101,30 +111,43 @@ function CourseInfo({user}) {
                  )}    
             </div>
           </div>
-          <Container style={{ marginTop: "40px"}}>
-            <h4>Subjects</h4>
-            <Row style={{ gap: "1px" }}>
-              {course.subjects
-                ?.filter((element) => element !== null)
-                .map((element) =>
-                  element ? (
-                    <Link
-                      to={"/"}
-                      state={{ course: course, subject: element }}
-                      key={element._id}
-                      style={{ maxWidth: "fit-content" }}
-                    >
-                      <Button
-                        style={{ maxWidth: "fit-content" }}
-                        variant="success"
-                      >
-                        {element.title}
-                      </Button>
-                    </Link>
-                  ) : null
-                )}
-            </Row>
-          </Container>
+          <Container style={{ marginTop: "40px" }}>
+               <h4 style={{fontSize:"35px", color:"white", }}>Subjects</h4>
+               <Row style={{ gap: "1px" }}>
+                 {course.subjects
+                   ?.filter((element) => element !== null)
+                   .map((element) =>
+                     element ? (
+                       <div key={element._id} style={{ maxWidth: "fit-content", margin: "5px" }}>
+                         <div
+                           style={{
+                            marginTop:"10px",
+                             padding: "10px",
+                             border: "1px solid #4891D8", // This is the border color for 'btn-info'
+                             borderRadius: "0.25rem", // This matches the border-radius for Bootstrap buttons
+                             color: "#fff",
+                             backgroundColor: "#4891D8",
+                             textAlign: "center",
+                             fontSize: "25px" // This makes the title text larger
+                           }}
+                         >
+                           {element.title}
+                         </div>
+                       </div>
+                     ) : null
+                   )}
+
+               </Row>
+               <div style={{marginTop:"15px"}}>
+                  <h4 style={{fontSize:"35px", color:"white", }}>Key Features</h4>
+                    <ul style={{fontSize:"25px"}}>
+                     {course.notes && course.notes.split(',').map((note, index) => (
+                       <li key={index} style={{color:"white"}}>{note.trim()}</li>
+                     ))}
+                   </ul>
+               </div>
+             </Container>
+
           </>
         )
       )}

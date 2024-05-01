@@ -1,0 +1,23 @@
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Adjust the gap between images as needed */
+    padding: 20px; /* This adds space around the edges */
+  }
+  
+  .horizontal-image {
+    width: calc(33.333% - 20px); /* Three images per row with gap considered */
+    height: 500px; /* Fixed height for all images */
+    object-fit: cover; /* This will cover the area without stretching the image */
+    margin-bottom: 10px; /* Space below each image */
+  }
+  
+  /* CSS class for vertical images */
+  .vertical-image {
+    width: calc(33.333% - 20px); /* Three images per row with gap considered */
+    height: 500px; /* Fixed height for all images */
+    object-fit: cover; /* This will cover the area without stretching the image */
+    margin-bottom: 10px; /* Space below each image */
+    transform: rotate(270deg); /* Rotate the image to make it horizontal */
+  }

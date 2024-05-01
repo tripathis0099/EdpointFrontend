@@ -27,6 +27,7 @@ function NavScrollExample({user}) {
             <Nav.Link href="/" >Home</Nav.Link>
             <Nav.Link href="#offline">Courses</Nav.Link>
             <Nav.Link href="#teachers">Teachers</Nav.Link>
+            <Nav.Link href="/gallery">Gallery</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <a href='/login'>
