@@ -16,6 +16,8 @@ import { StudentPage } from './components/admin/studentPage/studentPage';
 import CourseInfo from './components/courseInfo/courseInfo';
 import BuyRequest from './components/admin/BuyRequestPage/BuyRequest';
 import { Chapters, CourseSubjects, VideoNotes } from './components/courseInfo/cource_assets';
+import WatchVideo from './components/courseInfo/WatchVideo';
+import ReadNote from './components/courseInfo/ReadNote';
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -113,6 +115,8 @@ function App() {
           <Route path='/text' element={<VideoNotes/>} />
           <Route path='/chapters' element={<Chapters/>} />
           <Route path='/startCourse' element={<VideoNotes/>} />
+          <Route path='/watchvideo' element={<WatchVideo/>} />
+          <Route path='/readNote' element={<ReadNote/>} />
           <Route path='*' element={<h1 style={{minHeight:'100vh',display:'flex',justifyContent:'center',textAlign:'center'}}>404<br/> Page Not Found</h1>}/></Routes>
 
         <Footer/>

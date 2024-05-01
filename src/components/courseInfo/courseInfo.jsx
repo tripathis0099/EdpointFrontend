@@ -90,11 +90,15 @@ function CourseInfo({user}) {
               <h4>{course.name}</h4>
               <div className="text">{course.description}</div>
               <div className="text">{course.price}</div>
-              {buyClicked ? (
-                  <button type="button" class="btn btn-warning" onClick={handleBuy}>Request Pending...</button>
-                ) : (
-                  <button type="button" class="btn btn-info" onClick={handleBuy}>Buy</button>
-                )}      
+              {user.requests?.includes(id) ? (
+                 <button type="button" class="btn btn-warning" disabled>Request Pending...</button>
+                 ) : (
+                     buyClicked ? (
+                         <button type="button" class="btn btn-warning" onClick={handleBuy}>Request Pending...</button>
+                     ) : (
+                         <button type="button" class="btn btn-info" onClick={handleBuy}>Buy</button>
+                     )
+                 )}    
             </div>
           </div>
           <Container style={{ marginTop: "40px"}}>

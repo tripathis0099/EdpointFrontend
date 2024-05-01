@@ -41,6 +41,7 @@ const BuyRequest = () => {
       },
       body: JSON.stringify({ email: email, id: id, name: courseName}),  // replace with the actual email
     });
+    window.location.reload();
    }catch(error){
      console.log(error)
    }
@@ -55,6 +56,7 @@ const BuyRequest = () => {
         },
         body: JSON.stringify({ user: userId, course: courseId, email: email, name: courseName, id:id}),  // replace with the actual email
       });
+      window.location.reload();
      }catch(error){
        console.log(error)
      }
