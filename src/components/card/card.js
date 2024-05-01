@@ -26,7 +26,7 @@ export function BasicCardButton({id, img, title, text}) {
           <Card.Text>
             {text}
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Start</Button>
         </Card.Body>
       </Card>
       </Link>

@@ -87,8 +87,8 @@ export const Login = () => {
         {/* Alert */}
         {show && <Alert className="mb-2" variant="danger" onClose={() => setShow(false)} dismissible>{errorMessage}</Alert>}
         <Form.Group className="mb-2" controlId="username">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" value={inputUsername} placeholder="Username" onChange={(e) => setInputUsername(e.target.value)} required />
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="text" value={inputUsername} placeholder="Email" onChange={(e) => setInputUsername(e.target.value)} required />
         </Form.Group>
         {showOtpField && (
           <Form.Group className="mb-2" controlId="otpInput">
@@ -186,8 +186,8 @@ export const Register = () => {
           </Alert>
         )}
         <Form.Group className="mb-2" controlId="username">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" value={inputUsername} placeholder="Username" onChange={(e) => setInputUsername(e.target.value)} required />
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="text" value={inputUsername} placeholder="Email" onChange={(e) => setInputUsername(e.target.value)} required />
           {errors.username && <Form.Text className="text-danger">{errors.username}</Form.Text>}
         </Form.Group>
         <Form.Group className="mb-2" controlId="name">

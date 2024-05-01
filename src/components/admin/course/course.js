@@ -158,7 +158,7 @@ export const AdminCourse = () => {
               <div className="text">{course.description}</div>
               <Row style={{ display: "flex", gap: "43px" }}>
                 <Button style={{ maxWidth: "fit-content" }} variant="success">
-                  10 Students
+                  {course.enrolled||0} Students
                 </Button>
                 <Button style={{ maxWidth: "fit-content" }} variant="danger">
                   Go Live
