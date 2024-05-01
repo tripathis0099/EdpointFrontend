@@ -27,7 +27,7 @@ export const Login = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: inputUsername.toLocaleLowerCase() })
+        body: JSON.stringify({ email: inputUsername })
       });
 
       if (response.ok) {
@@ -149,7 +149,7 @@ export const Register = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          email: inputUsername.toLocaleLowerCase(),
+          email: inputUsername,
           name,
           phone,
           city,
