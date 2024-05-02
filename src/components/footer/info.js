@@ -128,9 +128,9 @@ export const ContactUsComponent = () => {
         <Card.Body>
           <Card.Title>Contact Us:</Card.Title>
           <Card.Text>
-            <strong>Email:</strong> info@educationpoint.com<br />
-            <strong>Phone:</strong> +1234567890<br />
-            <strong>Address:</strong> 123 Education Street, City, Country
+            <strong>Email:</strong> educationpointnaini@gmail.com<br />
+            <strong>Phone:</strong> +918707242287<br />
+            <strong>Address:</strong> AM - 14, ADA Road Near Maharishi Chauraha, Naini Prayagraj, Uttar Pradesh, India.
           </Card.Text>
         </Card.Body>
       </Card>
