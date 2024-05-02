@@ -49,7 +49,7 @@ export const Footer = () => {
             </div>
           </div>
         </section>
-        <hr className="my-5" />
+        <hr className="my-5" style={{opacity:'0',position:'relative'}}/>
         <section className="mb-5">
           <div className="row d-flex justify-content-center">
             <div className="col-lg-8">

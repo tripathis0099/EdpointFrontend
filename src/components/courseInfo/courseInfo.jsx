@@ -90,14 +90,21 @@ function CourseInfo({user}) {
               <h4>{course.name}</h4>
               <div className="text">{course.description}</div>
               <div className="pricing">
-  {course.discount && (
+  {course.discount?(
+    <>
     <span className="original-price" style={{ textDecoration: 'line-through', color: '#aaa', marginRight: '10px' }}>
       ₹ {course.price}
     </span>
-  )}
-  <span className="current-price" style={{ filter: course.discount ? 'blur(0.2px)' : 'none' }}>
-    ₹ {course.discount ? course.discount : course.price}
+    <span className="current-price" style={{ filter: course.discount ? 'blur(0.2px)' : 'none' }}>
+    ₹ {course.price - course.discount}
   </span>
+    </>
+    ):<>
+    <span className="original-price">
+      ₹ {course.price}
+    </span>
+    </>}
+  
 </div>
 
               {user.requests?.includes(id) ? (
@@ -128,7 +135,9 @@ function CourseInfo({user}) {
                              color: "#fff",
                              backgroundColor: "#4891D8",
                              textAlign: "center",
-                             fontSize: "25px" // This makes the title text larger
+                             fontSize: "18px", // This makes the title text larger
+                             cursor:'pointer',
+                             textTransform:'capitalize'
                            }}
                          >
                            {element.title}
@@ -139,8 +148,8 @@ function CourseInfo({user}) {
 
                </Row>
                <div style={{marginTop:"15px"}}>
-                  <h4 style={{fontSize:"35px", color:"white", }}>Key Features</h4>
-                    <ul style={{fontSize:"25px"}}>
+                  <h4 style={{fontSize:"28px", color:"white", }}>Key Features</h4>
+                    <ul style={{fontSize:"22px"}}>
                      {course.notes && course.notes.split(',').map((note, index) => (
                        <li key={index} style={{color:"white"}}>{note.trim()}</li>
                      ))}
