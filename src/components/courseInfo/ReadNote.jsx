@@ -46,9 +46,6 @@ function ReadNote() {
               />
             ))}
           </Document>
-          <p>
-            Page {pageNumber} of {numPages}
-          </p>
         </div>
       )}
       {!fileLink && (
