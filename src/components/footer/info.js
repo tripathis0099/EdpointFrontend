@@ -98,23 +98,9 @@ export const RefundPolicyComponent = () => {
           <Card.Body>
             <Card.Title>Refund Policy:</Card.Title>
             <Card.Text>
-              At Education Point, we strive to provide high-quality courses and exceptional customer service. If you are not satisfied with your purchase, we offer a refund policy outlined below:
+              At Education Point, we strive to provide high-quality courses and exceptional customer service. We offer No refund policy.
             </Card.Text>
-            <Card.Text>
-              <strong>Course Refunds:</strong> Refunds are available for courses within a specified timeframe from the date of purchase. The refund period varies depending on the course and is clearly stated at the time of purchase.
-            </Card.Text>
-            <Card.Text>
-              <strong>Refund Process:</strong> To request a refund, please contact our customer support team with your purchase details. Refunds will be issued to the original payment method within a reasonable timeframe.
-            </Card.Text>
-            <Card.Text>
-              <strong>Exceptions:</strong> Certain courses may have non-refundable deposits or fees. Please review the course details and refund policy before making a purchase.
-            </Card.Text>
-            <Card.Text>
-              <strong>Cancellation:</strong> If you wish to cancel your enrollment in a course, please notify us as soon as possible. Refunds may be subject to cancellation fees or prorated based on the amount of course material accessed.
-            </Card.Text>
-            <Card.Text>
-              Education Point reserves the right to modify this refund policy at any time without prior notice.
-            </Card.Text>
+            
           </Card.Body>
         </Card>
       </Container>
