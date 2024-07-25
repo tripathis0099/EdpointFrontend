@@ -8,48 +8,48 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     background-color: #f9f9f9;
-  }
-  
-  .checkout-container h1 {
+}
+
+.checkout-container h1 {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .customer-name {
+}
+
+.checkout-container .customer-name {
     margin-bottom: 20px;
-  }
-  
-  .customer-name label {
+}
+
+.checkout-container .customer-name label {
     display: block;
     margin-bottom: 5px;
-  }
-  
-  .customer-name input {
+}
+
+.checkout-container .customer-name input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  .course-list .course-item {
+}
+
+.checkout-container .course-list .course-item {
     padding: 15px;
     border-bottom: 1px solid #ccc;
-  }
-  
-  .course-list .course-item h2 {
+}
+
+.checkout-container .course-list .course-item h2 {
     margin-top: 0;
-  }
-  
-  .total {
+}
+
+.checkout-container .total {
     text-align: right;
     margin-top: 20px;
-  }
-  
-  .total h2 {
+}
+
+.total h2 {
     margin: 0;
-  }
-  
-  button {
+}
+
+.checkout-container button {
     display: block;
     width: 100%;
     padding: 15px;
@@ -60,9 +60,32 @@
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
-  }
-  
-  button:hover {
+}
+
+.checkout-container button:hover {
     background-color: #45a049;
-  }
-  
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+    .checkout-container {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        scale: 0.8;
+        transform-origin: center;
+    }
+
+    .checkout-container .customer-name input {
+        padding: 5px;
+    }
+
+    .checkout-container .course-list .course-item {
+        padding: 10px;
+    }
+
+    .checkout-container button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
