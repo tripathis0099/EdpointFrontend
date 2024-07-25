@@ -113,7 +113,7 @@ function CourseInfo({user}) {
                      buyClicked ? (
                          <button type="button" class="btn btn-warning" onClick={handleBuy}>Request Pending...</button>
                      ) : (
-                         <button type="button" class="btn btn-info" onClick={handleBuy}>Buy</button>
+                         <Link to="/checkout" state ={course} type="button" class="btn btn-info" onClick={handleBuy}>Buy</Link>
                      )
                  )}    
             </div>
